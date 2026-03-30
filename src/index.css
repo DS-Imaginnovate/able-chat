@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff !important;
+  color: #1a1a1a;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force Ant Design layout to be white — override their CSS tokens */
+.ant-layout,
+.ant-layout-content,
+.ant-layout-sider,
+[class*="ant-layout"] {
+  background: #ffffff !important;
+}
+
+/* Remove all blue focus rings */
+*:focus,
+*:focus-within,
+*:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+textarea,
+input {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Override Ant Design Dropdown */
+.ant-dropdown-menu {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08) !important;
+  border: 1px solid #f1f5f9 !important;
+  padding: 4px !important;
+  background: #ffffff !important;
+}
+
+.ant-dropdown-menu-item {
+  border-radius: 8px !important;
+  font-size: 13px !important;
+}
+
+/* Override Ant Design Avatar */
+.ant-avatar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Custom thin scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
