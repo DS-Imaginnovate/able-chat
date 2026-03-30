@@ -8,7 +8,6 @@ import {
   PushpinOutlined,
   DeleteOutlined,
   SettingOutlined,
-  BellOutlined,
   CaretDownOutlined,
   LogoutOutlined,
   HistoryOutlined,
@@ -173,19 +172,16 @@ const SidebarNav = ({ collapsed, setCollapsed }) => {
             </span>
           </div>
         </Dropdown>
-        <div className="flex items-center justify-between px-2 py-2 mt-1 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
-          <div className="flex items-center gap-2">
-            <Avatar
-              icon={<UserOutlined />}
-              size={26}
-              className="border border-slate-200 bg-slate-100 text-slate-500"
-              alt={userDisplayName}
-            />
-            <span className="text-sm text-slate-600 font-medium truncate max-w-[132px]">
-              {userDisplayName}
-            </span>
-          </div>
-          <BellOutlined className="text-slate-400 text-base hover:text-slate-600 transition-colors" />
+        <div className="flex items-center gap-2 px-2 py-2 mt-1 rounded-lg hover:bg-slate-50 cursor-pointer transition-colors">
+          <Avatar
+            icon={<UserOutlined />}
+            size={26}
+            className="border border-slate-200 bg-slate-100 text-slate-500 flex-shrink-0"
+            alt={userDisplayName}
+          />
+          <span className="text-sm text-slate-600 font-medium truncate">
+            {userDisplayName}
+          </span>
         </div>
       </div>
     </div>
