@@ -7,7 +7,7 @@ const MainLayout = ({ children }) => {
   return (
     <div className="flex bg-white min-h-screen">
       {/* Sidebar */}
-      <div className="flex h-screen sticky top-0 overflow-hidden z-10">
+      <div className="flex h-screen sticky top-0 z-10">
         <SidebarNav collapsed={collapsed} setCollapsed={setCollapsed} />
       </div>
 

@@ -73,7 +73,9 @@ const SidebarNav = ({ collapsed, setCollapsed }) => {
               onClick={() => setCollapsed(false)}
               className="absolute z-20 w-8 h-8 flex items-center justify-center bg-[#5367c3] rounded-full text-white opacity-0 group-hover/sidebar:opacity-100 transition-all duration-300 hover:bg-[#4352a5] shadow-[0_2px_8px_rgba(83,103,195,0.3)] border-2 border-white -right-4"
             >
-              <LayoutOutlined className="text-[11px]" />
+              <div className="w-[16px] h-[14px] border-2 border-white rounded-[3px] relative">
+                <div className="absolute left-[5px] top-0 bottom-0 w-[2px] bg-white opacity-80" />
+              </div>
             </button>
           </Tooltip>
         </div>
