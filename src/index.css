@@ -77,3 +77,15 @@ input {
 ::-webkit-scrollbar-thumb:hover {
   background: #cbd5e1;
 }
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2.5s infinite linear;
+  background: linear-gradient(to right, #f8fafc 4%, #f1f5f9 25%, #f8fafc 36%);
+  background-size: 1000px 100%;
+}

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { Spin } from "antd";
 import ReactMarkdown from 'react-markdown';
 import { useAbleChat } from "../../context/AbleChatContext";
 import sidebarLogo from "../../assets/sidebar-logo.png";
+import processingLoader from "../../assets/able-processing-loader.gif";
 
 const ChatThread = ({ messages, sending }) => {
   const endRef = useRef(null);
@@ -64,11 +64,10 @@ const ChatThread = ({ messages, sending }) => {
         <div className="flex justify-start items-start gap-3">
           <div className="flex-shrink-0 mt-0.5">
             <div className="w-8 h-8 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center overflow-hidden p-1 shadow-sm">
-              <img src={sidebarLogo} alt="Able AI" className="w-full h-full object-contain" />
+              <img src={processingLoader} alt="Able AI" className="w-full h-full object-contain" />
             </div>
           </div>
           <div className="inline-flex items-center gap-3 rounded-3xl rounded-bl-md border border-slate-200 bg-white px-5 py-3 text-sm text-slate-500 shadow-sm animate-pulse">
-            <Spin size="small" />
             Able is thinking...
           </div>
         </div>

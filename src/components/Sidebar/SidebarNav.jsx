@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react';
-import { Dropdown, Avatar } from 'antd';
+import { Dropdown, Avatar, Tooltip } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import {
   PlusOutlined,
@@ -22,7 +22,7 @@ const SidebarNav = ({ collapsed, setCollapsed }) => {
   const [historyOpen, setHistoryOpen] = useState(true);
   const navigate = useNavigate();
   const { user, logout } = useAuth();
-  const { sessions, currentSessionId, selectSession, startNewChat } = useAbleChat();
+  const { sessions, currentSessionId, selectSession, startNewChat, loadingHistory } = useAbleChat();
 
   const userDisplayName = useMemo(() => {
     if (!user) {
@@ -63,12 +63,19 @@ const SidebarNav = ({ collapsed, setCollapsed }) => {
         {/* Top Section */}
         <div className="w-full mb-6 relative h-10 flex items-center justify-center">
           <img src={sidebarLogo} alt="Logo" className="w-7 h-7" />
-          <button
-            onClick={() => setCollapsed(false)}
-            className="absolute z-20 w-8 h-8 flex items-center justify-center bg-[#5367c3] rounded-full text-white opacity-0 group-hover/sidebar:opacity-100 transition-all duration-200 hover:bg-[#4352a5] shadow-md border-2 border-white translate-x-4"
+          <Tooltip 
+            title="Click here to expand" 
+            placement="bottom"
+            color="#1e293b"
+            overlayInnerStyle={{ color: '#ffffff', fontSize: '12px', padding: '6px 10px' }}
           >
-            <LayoutOutlined className="text-[10px]" />
-          </button>
+            <button
+              onClick={() => setCollapsed(false)}
+              className="absolute z-20 w-8 h-8 flex items-center justify-center bg-[#5367c3] rounded-full text-white opacity-0 group-hover/sidebar:opacity-100 transition-all duration-300 hover:bg-[#4352a5] shadow-[0_2px_8px_rgba(83,103,195,0.3)] border-2 border-white -right-4"
+            >
+              <LayoutOutlined className="text-[11px]" />
+            </button>
+          </Tooltip>
         </div>
 
 
@@ -141,24 +148,36 @@ const SidebarNav = ({ collapsed, setCollapsed }) => {
                 }`}
             />
           </button>
-          {historyOpen && sessions.map((item) => (
-            <div
-              key={item.session_id}
-              onClick={() => selectSession(item.session_id)}
-              className={`group relative flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all ${currentSessionId === item.session_id ? 'bg-slate-100 text-slate-900' : 'text-slate-600 hover:bg-slate-50'
-                }`}
-            >
-              <span className="text-sm truncate pr-2 flex-1">{item.title}</span>
-              <Dropdown menu={contextMenuItems} trigger={['click']}>
-                <button
-                  className="opacity-0 group-hover:opacity-100 p-1 h-6 w-6 flex items-center justify-center rounded hover:bg-slate-200 transition-all flex-shrink-0"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <MoreOutlined className="text-slate-500 text-base" />
-                </button>
-              </Dropdown>
-            </div>
-          ))}
+          {historyOpen && (
+            <>
+              {loadingHistory && sessions.length === 0 ? (
+                <div className="space-y-2 px-2 mt-2">
+                  {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                    <div key={n} className="h-8 w-full rounded-lg animate-shimmer" />
+                  ))}
+                </div>
+              ) : (
+                sessions.map((item) => (
+                  <div
+                    key={item.session_id}
+                    onClick={() => selectSession(item.session_id)}
+                    className={`group relative flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer transition-all ${currentSessionId === item.session_id ? 'bg-slate-100 text-slate-900' : 'text-slate-600 hover:bg-slate-50'
+                      }`}
+                  >
+                    <span className="text-sm truncate pr-2 flex-1">{item.title}</span>
+                    {/* <Dropdown menu={contextMenuItems} trigger={['click']}>
+                      <button
+                        className="opacity-0 group-hover:opacity-100 p-1 h-6 w-6 flex items-center justify-center rounded hover:bg-slate-200 transition-all flex-shrink-0"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <MoreOutlined className="text-slate-500 text-base" />
+                      </button>
+                    </Dropdown> */}
+                  </div>
+                ))
+              )}
+            </>
+          )}
         </div>
       </div>
 
