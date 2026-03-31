@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Card, Typography, message } from 'antd';
 import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import './Login.css';
 import logo from '../../assets/able-logo.png';
 import { useAuth } from '../../context/AuthContext';
 
@@ -39,18 +38,27 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <Card className="login-card" bordered={false}>
-        <div className="login-logo-container">
-          <img src={logo} alt="Able Logo" className="login-logo" />
+    <div className="flex justify-center items-center min-h-screen bg-[#f0f2f5] p-6">
+      <Card
+        className="w-full max-w-[440px] !rounded-xl !shadow-[0_4px_12px_rgba(0,0,0,0.08)] py-8 px-4"
+        bordered={false}
+      >
+        <div className="flex flex-col items-center mb-8">
+          <img src={logo} alt="Able Logo" className="max-w-[200px] h-auto" />
         </div>
-        
-        <Title level={3} className="login-title">Login</Title>
-        
+
+        <Title
+          level={3}
+          className="!text-center !mb-10 text-[#262626] font-semibold"
+        >
+          Login
+        </Title>
+
         <Form
           name="login-form"
           layout="vertical"
           initialValues={{ remember: true }}
+          className="w-full [&_.ant-form-item-label_label]:!text-[#262626] [&_.ant-form-item-label_label]:!font-medium [&_.ant-form-item-explain-error]:!text-[13px] [&_.ant-form-item-explain-error]:!mt-1"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           requiredMark={(label, { required }) => (
@@ -61,13 +69,13 @@ const Login = () => {
           )}
         >
           <Form.Item
-            label="Email or Mobile number:"
+            label="Email"
             name="username"
-            rules={[{ required: true, message: 'Please input your email or mobile number!' }]}
+            rules={[{ required: true, message: 'Please input your email' }]}
           >
-            <Input 
-              placeholder="Enter Email or Mobile Number" 
-              className="login-input"
+            <Input
+              placeholder="Enter Email"
+              className="!rounded-[6px] px-3 py-2 hover:!border-[#40a9ff] focus:!border-[#40a9ff]"
             />
           </Form.Item>
 
@@ -78,7 +86,7 @@ const Login = () => {
           >
             <Input.Password
               placeholder=""
-              className="login-input"
+              className="!rounded-[6px] px-3 py-2 hover:!border-[#40a9ff] focus:!border-[#40a9ff]"
               iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
             />
           </Form.Item>
@@ -87,7 +95,7 @@ const Login = () => {
             <Button
               type="primary"
               htmlType="submit"
-              className="login-submit-button"
+              className="!h-[44px] !rounded-[22px] !bg-[#597ef7] !border-[#597ef7] !text-base mt-3 hover:!bg-[#2f54eb] hover:!border-[#2f54eb] focus:!bg-[#2f54eb] focus:!border-[#2f54eb]"
               block
               loading={submitting}
             >
@@ -95,8 +103,13 @@ const Login = () => {
             </Button>
           </Form.Item>
 
-          <div className="login-footer">
-            <a href="/forgot-password" style={{ color: '#1890ff' }}>Forgot Password ?</a>
+          <div className="text-center mt-8">
+            <a
+              href="/forgot-password"
+              className="!text-sm !text-[#1890ff] transition-colors duration-300 hover:!text-[#40a9ff]"
+            >
+              Forgot Password ?
+            </a>
           </div>
         </Form>
       </Card>

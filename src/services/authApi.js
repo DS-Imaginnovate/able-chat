@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_BASE =
-  import.meta.env.VITE_API_BASE_URL;
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 const ACCESS_TOKEN_KEY = "fe_access_token";
 const REFRESH_TOKEN_KEY = "fe_refresh_token";
