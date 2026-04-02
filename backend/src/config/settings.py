@@ -1,0 +1,18 @@
+from src.config.secrets import get_secrets_config
+
+secrets = get_secrets_config()
+
+ENVIRONMENT = secrets.ENVIRONMENT
+DEBUG = secrets.DEBUG
+LOG_LEVEL = secrets.LOG_LEVEL
+
+VERTEX_AI_SERVICE_ACCOUNT_FILE = secrets.VERTEX_AI_SERVICE_ACCOUNT_FILE
+
+VERTEX_AI_MODEL = secrets.VERTEX_AI_MODEL
+
+SQLALCHEMY_DATABASE_URL = secrets.SQLALCHEMY_DATABASE_URL
+
+FLEETENABLE_AUTH_BASE_URL = secrets.FLEETENABLE_AUTH_BASE_URL
+
+APP_NAME = 'Able Chat Backend'
+APP_VERSION = '0.1.0'
